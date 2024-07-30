@@ -1,3 +1,15 @@
 {
-  "name": "Part 3"
+  "title": "Part 3",
+  "description": "description.md",
+  "tabs": [
+    {
+      "name": "Code",
+      "file": "code.rs"
+    },
+    {
+      "name": "IDL",
+      "file": "code.idl"
+    }
+  ],
+  "actions": []
 }
