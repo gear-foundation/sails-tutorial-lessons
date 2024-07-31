@@ -2,11 +2,11 @@
   "title": "Tutorial 3",
   "parts": [
     {
-      "name": "Part 1",
+      "title": "Part 1",
       "file": "03_lesson/01_part/"
     },
     {
-      "name": "Part 2",
+      "title": "Part 2",
       "file": "03_lesson/02_part/"
     }
   ]

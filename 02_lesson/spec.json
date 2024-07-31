@@ -2,15 +2,15 @@
   "title": "Tutorial 2",
   "parts": [
     {
-      "name": "Part 1",
+      "title": "Part 1",
       "file": "02_lesson/01_part/"
     },
     {
-      "name": "Part 2",
+      "title": "Part 2",
       "file": "02_lesson/02_part/"
     },
     {
-      "name": "Part 3",
+      "title": "Part 3",
       "file": "02_lesson/03_part/"
     }
   ]

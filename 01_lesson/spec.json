@@ -2,7 +2,7 @@
   "title": "Tutorial 1",
   "parts": [
     {
-      "name": "Part 1",
+      "title": "Part 1",
       "file": "01_lesson/01_part/"
     }
   ]
