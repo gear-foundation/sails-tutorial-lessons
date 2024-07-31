@@ -1,15 +1,9 @@
 {
   "title": "Tutorial 1",
-  "description": "01_lesson/description.md",
-  "tabs": [
+  "parts": [
     {
-      "name": "Code",
-      "file": "01_lesson/code.rs"
-    },
-    {
-      "name": "IDL",
-      "file": "01_lesson/code.idl"
+      "name": "Part 1",
+      "file": "01_lesson/01_part/"
     }
-  ],
-  "actions": []
+  ]
 }

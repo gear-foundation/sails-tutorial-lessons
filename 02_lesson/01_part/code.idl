@@ -1,8 +1,0 @@
-constructor {
-  New : (name: str);
-};
-
-service Token {
-  query Name : () -> str;
-};
-
