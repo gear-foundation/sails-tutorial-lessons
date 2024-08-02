@@ -4,11 +4,11 @@
   "tabs": [
     {
       "name": "Code",
-      "file": "code.rs"
+      "file": "02_lesson/03_part/code.rs"
     },
     {
       "name": "IDL",
-      "file": "code.idl"
+      "file": "02_lesson/03_part/code.idl"
     }
   ],
   "actions": []
