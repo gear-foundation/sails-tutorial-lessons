@@ -1,16 +1,16 @@
 {
-  "title": "Developing a Simple Fungible Token Contract",
+  "title": "Fungible Token Contract",
   "parts": [
     {
-      "title": "Understanding Services, Storage, and Message Routing",
+      "title": "Services, Storage, Routing",
       "file": "02_lesson/01_part/"
     },
     {
-      "title": "Implementing User Balances and Token Minting",
+      "title": "User Balances, Minting",
       "file": "02_lesson/02_part/"
     },
     {
-      "title": "Implementing Token Transfers and Events",
+      "title": "Transfers, Events",
       "file": "02_lesson/03_part/"
     }
   ]

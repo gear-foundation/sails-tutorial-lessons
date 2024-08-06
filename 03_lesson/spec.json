@@ -1,12 +1,12 @@
 {
-  "title": "Extending a Fungible Token Contract",
+  "title": "Extending Token Contract",
   "parts": [
     {
-      "title": "Enhancing a Fungible Token with Custom Functionalities",
+      "title": "Custom Functionalities",
       "file": "03_lesson/01_part/"
     },
     {
-      "title": "Implementing Mint and Burn Functions",
+      "title": "Mint and Burn Functions",
       "file": "03_lesson/02_part/"
     }
   ]
