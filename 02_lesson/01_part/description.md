@@ -1,20 +1,16 @@
-In this lesson, we will start writing a fungible token contract while exploring additional aspects of the Sails framework.
+Let's implement a simple fungible token contract. This contract will manage user balances and mint new tokens.
 
-We will create a simple contract with the following state:
+Start by introducing a service that initializes the token name during contract deployment. The service will also include a method to return the specified name.
 
-- User balances
-- Token name
+Here's the step-by-step explanation:
 
-First, let's create a service that initializes the token name upon contract deployment and adds a method to return the specified name.
-
-Step-by-step explanation:
-
-1. Structure Definition: We define a `Storage` structure to store the token name.
-2. Static State Storage: We use a static variable to hold our state. Before initialization, `STORAGE` is `None`, allowing us to handle the possibility of the storage being uninitialized.
-3. Storage Implementation: The `Storage` struct has a `get` method that returns a reference to the storage.
-4. Token Service Implementation: We define a `Token` struct and use the `#[gservice]` attribute to mark the `Token` struct as a service.
-    - Initialization (`init` method): This method takes a `String` parameter `name` and initializes the static storage with this name.
-    - Name Retrieval (`name` method): This method returns the name stored in the static storage.
-5. Program Implementation: In the previous lesson, we had only a service constructor. Here, we add an application constructor. A set of its associated public functions returning `Self` are treated as application constructors. These will be called once at the beginning of the application’s lifetime, when the application is loaded onto the network.
-    - Application Constructor (`new` method): This method initializes the token with the specified name by calling `Token::init` and returns an instance of `MyProgram`.
-    - Token Service Access (`token` method): This method returns a default instance of the `Token` struct.
+1. Structure Definition: The `State` structure stores the token name.
+2. Static State Storage: A static variable holds the state. Before initialization, `STATE` is `None`, allowing for the possibility of the storage being uninitialized.
+3. Storage Implementation: The `State` struct has a `get` method that returns a reference to the storage.
+4. Token Service Implementation: The `Token` struct is marked as a service with the `#[service]` attribute.
+    - **Initialization (`init` method)**: Takes a `String` parameter `name` and initializes the static storage with this name.
+    - **Name Retrieval (`name` method)**: Returns the name stored in the static storage.
+5. Program Implementation: The previous lesson only added a service constructor. Here, an application constructor is added. Associated public functions returning `Self` are treated as application constructors and are called once at the beginning of the application’s lifetime when the application is loaded onto the network.
+    - **Application Constructor (`new` method)**: Initializes the token with the specified name by calling `Token::init` and returns an instance of `MyProgram`.
+    - **Token Service Access (`token` method)**: Returns a default instance of the `Token` struct.
+    - Another crucial concept is message routing. This concept doesn't have a mandatory representation in the code but can be altered using the `#[route]` attribute applied to associated public functions. Message routing is about rules for dispatching an incoming request message to a specific service's method using service and method names. If the `#[route("token")]` attribute was not used above the application constructor of the token service, then the service is exposed as `TokenSvc`. With the `#[route("token")]` macro, it is exposed as `Token`.

@@ -1,20 +1,20 @@
 #![no_std]
-use sails::{prelude::*, collections::HashMap};
+use sails_rs::{collections::HashMap, prelude::*};
 
-pub struct Storage {
+pub struct State {
     name: String,
     balances: HashMap<ActorId, U256>,
 }
 
-static mut STORAGE: Option<Storage> = None;
+static mut STATE: Option<State> = None;
 
-impl Storage {
+impl State {
     pub fn get() -> &'static Self {
-        unsafe { STORAGE.as_ref().expect("Storage is not initialized") }
+        unsafe { STATE.as_ref().expect("State is not initialized") }
     }
 
     pub fn get_mut() -> &'static mut Self {
-        unsafe { STORAGE.as_mut().expect("Storage is not initialized") }
+        unsafe { STATE.as_mut().expect("State is not initialized") }
     }
 }
 
@@ -22,49 +22,70 @@ impl Storage {
 pub struct Token;
 
 #[derive(Encode, TypeInfo)]
-enum TokenEvent {
-    Transfer { from: ActorId, to: ActorId, amount: U256 },
+enum Events {
+    Transferred {
+        from: ActorId,
+        to: ActorId,
+        value: U256,
+    },
+    Minted { to: ActorId, value: U256 },
 }
 
-#[gservice(events = TokenEvent)]
+#[service(events = Events)]
 impl Token {
     pub fn init(name: String) {
         unsafe {
-            STORAGE = Some(Storage {
+            STATE = Some(State {
                 name,
                 balances: HashMap::new(),
             });
         }
     }
 
-    pub fn mint(&mut self, to: ActorId, amount: U256) {
-        let storage = Storage::get_mut();
-        let balance = storage.balances.entry(to).or_insert(U256::zero());
-        *balance += amount;
+    pub fn mint(&mut self, to: ActorId, value: U256) {
+        let state = State::get_mut();
+        let balance = state.balances.entry(to).or_insert(U256::zero());
+        *balance += value;
+        let _ = self.notify_on(Events::Minted { to, value });
     }
 
-    pub fn transfer(&mut self, from: ActorId, to: ActorId, amount: U256) {
-        let storage = Storage::get_mut();
-        let from_balance = storage.balances.entry(from).or_insert(U256::zero());
+    pub fn transfer(&mut self, from: ActorId, to: ActorId, value: U256) {
+        let state = State::get_mut();
+        let from_balance = state.balances.entry(from).or_insert(U256::zero());
 
-        if *from_balance < amount {
+        if *from_balance < value {
             panic!("Insufficient balance");
         }
 
-        *from_balance -= amount;
-        let to_balance = storage.balances.entry(to).or_insert(U256::zero());
-        *to_balance += amount;
+        *from_balance -= value;
+        let to_balance = state.balances.entry(to).or_insert(U256::zero());
+        *to_balance += value;
 
-        let _ = self.notify_on(TokenEvent::Transfer { from, to, amount });
+        let _ = self.notify_on(Events::Transferred { from, to, value });
     }
 
     pub fn name(&self) -> &'static str {
-        let storage = Storage::get();
-        &storage.name
+        let state = State::get();
+        &state.name
     }
 
     pub fn balance_of(&self, account: ActorId) -> U256 {
-        let storage = Storage::get();
-        *storage.balances.get(&account).unwrap_or(&U256::zero())
+        let state = State::get();
+        *state.balances.get(&account).unwrap_or(&U256::zero())
     }
 }
+
+pub struct MyProgram;
+
+#[program]
+impl MyProgram {
+    pub fn new(name: String) -> Self {
+        Token::init(name);
+        Self
+    }
+
+    pub fn token(&self) -> Token {
+        Token::default()
+    }
+}
+

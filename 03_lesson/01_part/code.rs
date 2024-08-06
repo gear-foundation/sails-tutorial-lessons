@@ -1,7 +1,6 @@
 #![no_std]
-use sails::{prelude::*};
+use sails_rs::{prelude::*};
 use vft::{Service as VftService, Storage};
-
 
 #[derive(Encode, Decode, TypeInfo)]
 pub enum Event {
@@ -42,3 +41,18 @@ impl AsRef<VftService> for ExtendedService {
         &self.vft
     }
 }
+
+pub struct MyProgram;
+
+#[program]
+impl MyProgram {
+    pub fn new(name: String, symbol: String, decimals: u8) -> Self {
+        VftService::init(name, symbol, decimals);
+        Self
+    }
+
+    pub fn vft(&self) -> VftService {
+        VftService::new()
+    }
+}
+

@@ -1,36 +1,33 @@
 #![no_std]
-use sails::prelude::*;
-use vft::{Service as VftService, Storage};
+use sails_rs::prelude::*;
+use vft::{Service as BaseVftService, Storage};
 
 #[derive(Encode, Decode, TypeInfo)]
-pub enum Event {
+pub enum Events {
     Minted { to: ActorId, value: U256 },
     Burned { from: ActorId, value: U256 },
 }
 
 #[derive(Clone)]
-pub struct ExtendedService {
-    vft: VftService,
+pub struct VftService {
+    vft: BaseVftService,
 }
 
-impl ExtendedService {
+impl VftService {
     pub fn init(name: String, symbol: String, decimals: u8) -> Self {
-        ExtendedService {
-            vft: <VftService>::seed(name, symbol, decimals),
+        VftService {
+            vft: <BaseVftService>::seed(name, symbol, decimals),
         }
     }
 }
-#[gservice(extends = VftService, events = Event)]
-impl ExtendedService {
+#[service(extends = BaseVftService, events = Events)]
+impl VftService {
     pub fn new() -> Self {
         Self {
-            vft: VftService::new(),
+            vft: BaseVftService::new(),
         }
     }
     pub fn mint(&mut self, to: ActorId, value: U256) {
-        if value.is_zero() {
-            panic!("Attempted to mint zero value");
-        }
         let balances = Storage::balances();
         let total_supply = Storage::total_supply();
 
@@ -38,27 +35,16 @@ impl ExtendedService {
             .checked_add(value)
             .unwrap_or_else(|| panic!("Numeric overflow occurred"));
 
-        let balance = balances
-            .get(&to)
-            .map_or(U256::zero(), |&balance| balance.into());
-        let new_balance = balance
-            .checked_add(value)
-            .unwrap_or_else(|| panic!("Numeric overflow occurred"));
-
-        let Some(non_zero_new_balance) = NonZeroU256::new(new_balance) else {
-            unreachable!();
-        };
-
-        balances.insert(to, non_zero_new_balance);
+        balances
+            .entry(to)
+            .and_modify(|a| *a = *a + value)
+            .or_insert(value);
 
         *total_supply = new_total_supply;
-        let _ = self.notify_on(Event::Minted { to, value });
+        let _ = self.notify_on(Events::Minted { to, value });
     }
 
     pub fn burn(&mut self, from: ActorId, value: U256) {
-        if value.is_zero() {
-            panic!("Attempted to burn zero value");
-        }
         let balances = Storage::balances();
         let total_supply = Storage::total_supply();
 
@@ -66,28 +52,41 @@ impl ExtendedService {
             .checked_sub(value)
             .unwrap_or_else(|| panic!("Numeric unferflow occurred"));
 
-        let balance = balances
-            .get(&from)
-            .map_or(U256::zero(), |&balance| balance.into());
+        let balance = balances.get(&from).expect("Account has no balance");
 
         let new_balance = balance
             .checked_sub(value)
             .unwrap_or_else(|| panic!("Insufficient balance"));
 
-        if let Some(non_zero_new_balance) = NonZeroU256::new(new_balance) {
-            balances.insert(from, non_zero_new_balance);
+        if !new_balance.is_zero() {
+            balances.insert(from, new_balance);
         } else {
             balances.remove(&from);
         }
 
         *total_supply = new_total_supply;
-        
-        let _ = self.notify_on(Event::Burned { from, value });
+
+        let _ = self.notify_on(Events::Burned { from, value });
     }
 }
 
-impl AsRef<VftService> for ExtendedService {
-    fn as_ref(&self) -> &VftService {
+impl AsRef<BaseVftService> for VftService {
+    fn as_ref(&self) -> &BaseVftService {
         &self.vft
     }
 }
+
+pub struct MyProgram;
+
+#[program]
+impl MyProgram {
+    pub fn new(name: String, symbol: String, decimals: u8) -> Self {
+        VftService::init(name, symbol, decimals);
+        Self
+    }
+
+    pub fn vft(&self) -> VftService {
+        VftService::new()
+    }
+}
+

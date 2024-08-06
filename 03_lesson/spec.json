@@ -1,12 +1,12 @@
 {
-  "title": "Tutorial 3",
+  "title": "Extending a Fungible Token Contract",
   "parts": [
     {
-      "title": "Part 1",
+      "title": "Enhancing a Fungible Token with Custom Functionalities",
       "file": "03_lesson/01_part/"
     },
     {
-      "title": "Part 2",
+      "title": "Implementing Mint and Burn Functions",
       "file": "03_lesson/02_part/"
     }
   ]

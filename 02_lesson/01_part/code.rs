@@ -1,47 +1,48 @@
 #![no_std]
-use sails::prelude::*;
+use sails_rs::{prelude::*};
 
-pub struct Storage {
+pub struct State {
     name: String,
 }
 
-static mut STORAGE: Option<Storage> = None;
+static mut STATE: Option<State> = None;
 
-impl Storage {
+impl State {
     pub fn get() -> &'static Self {
-        unsafe { STORAGE.as_ref().expect("Storage is not initialized") }
+        unsafe { STATE.as_ref().expect("State is not initialized") }
     }
 }
 
 #[derive(Default)]
 pub struct Token;
 
-#[gservice]
+#[service]
 impl Token {
     pub fn init(name: String) {
         unsafe {
-            STORAGE = Some(Storage {name});
+            STATE = Some(State {
+                name,
+            });
         }
     }
 
     pub fn name(&self) -> &'static str {
-        let storage = Storage::get();
-        &storage.name
+        let state = State::get();
+        &state.name
     }
 }
 
-#[derive(Default)]
 pub struct MyProgram;
 
-#[gprogram]
+#[program]
 impl MyProgram {
-
     pub fn new(name: String) -> Self {
         Token::init(name);
         Self
     }
 
-    pub fn token(&self) -> Token {
+    #[route("token")]
+    pub fn token_svc(&self) -> Token {
         Token::default()
     }
 }

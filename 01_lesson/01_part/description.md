@@ -1,21 +1,33 @@
-In this lesson, we will create a simple program that outputs the classic "hello world" message.
+# Sails tutorials
 
-Let's examine and explain the code provided on the right side.
+These lessons will show how easy it is to create smart contracts on the Vara platform using the [Sails](https://github.com/gear-tech/sails) framework. It provides the initial steps and core concepts for a confident start on Vara.
 
-To write contracts on Vara, we use the [Sails](https://github.com/gear-tech/sails/tree/master) library. Sails is a framework designed to simplify and clarify the process of building applications with the [Gear Protocol](https://gear-tech.io/).
+## What is Sails?
+
+Sails is a library for bringing your experience of writing applications utilizing [Gear Protocol](https://gear-tech.io/) to the next level of simplicity and clarity.
+
+It deals with things like:
+
+- Eliminating the necessity of writing some low-level boilerplate code and letting you to stay
+focused on your business problem
+- Generated [IDL](https://en.wikipedia.org/wiki/Interface_description_language) file for your application
+- Generated client allowing to interact with your application from code written in different languages and executed in different runtimes
+
+### Building Your First Hello World Program
+
+This lesson covers creating a program that outputs “Hello, world!”
 
 The architecture of Sails applications is based on several key concepts.
 
-The first concept is the **service**, which is represented by an implementation of a Rust struct marked with the `#[gservice]` attribute. The main responsibility of a service is to implement some aspect of the application's business logic. In this example, we have a simple method `hello_world` that returns the string "hello world" when called.
+1. **Service:** A Rust struct implementation marked with the `#[service]` attribute represents the **service,** which implements an aspect of the application's business logic.
+2. **Program: A** Rust struct implementation marked with the `#[program]` attribute represents the **program**. The program's primary role is to host one or more services and expose them to external consumers.
 
-The second key concept is the **program**, which, similar to the service, is represented by an implementation of a Rust struct marked with the `#[gprogram]` attribute. The primary role of the program is to host one or more services and expose them to external consumers.
+The program requires the service to function. Program implementation must follow Gear protocol architecture.
 
-In the code above, we first import everything from the `sails::prelude` module.
+Code explanation:
 
-We then define a struct `HelloWorld` and derive the `Default` trait for it, which provides a default value for the struct.
+In the code on the right, the sails_rs::prelude module provides necessary imports.
 
-Next, we define the `HelloWorldService` with the `#[gservice]` attribute. This service has a single method `hello_world` that returns the string "Hello, world!".
+The `#[service]` attribute defines the `HelloWorld` struct. This service has a single-method `greeting` that returns the string "Hello, world!".
 
-Finally, we define the `MyProgram` struct with the `#[gprogram]` attribute. This program has a method `hello_world_svc` that creates a new instance of the `HelloWorld` struct using its default value. A set of program's **public** methods working over `&self` and having no other parameters are treated as exposed service constructors and are called each time when an incoming request message needs be dispatched to a selected service.
-
-This simple example demonstrates how to use Sails to create a basic program that provides the "hello world" output.
+The `#[program]` attribute defines the `MyProgram` struct. This program includes a method `hello_world` that creates a new instance of the `HelloWorld` struct. The program's **public** methods, taking `&self` and no other arguments, serve as exposed service constructors. These public methods are called each time an incoming request message needs to be sent to a selected service.
