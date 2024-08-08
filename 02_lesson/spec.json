@@ -1,5 +1,9 @@
 {
   "title": "Fungible Token Contract",
+  "codeId": "0xb5d0e67242b8951c898e62013c3adbdb0c04751c7010f2f879cfc7393062aa57",
+  "initialParams": {
+    "name": "Fungible Token Contract"
+  },
   "parts": [
     {
       "title": "Services, Storage, Routing",
