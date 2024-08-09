@@ -11,5 +11,25 @@
       "file": "02_lesson/02_part/code.idl"
     }
   ],
-  "actions": []
+  "actions": [
+    {
+      "service": "Token",
+      "name": "Mint",
+      "nameButton": "Mint",
+      "type": "function",
+      "params": {
+        "to": "user",
+        "value": "1000"
+      }
+    },
+    {
+      "service": "Token",
+      "name": "BalanceOf",
+      "nameButton": "Get Balance",
+      "type": "query",
+      "params": {
+        "account": "user"
+      }
+    }
+  ]
 }

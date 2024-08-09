@@ -11,5 +11,12 @@
       "file": "01_lesson/01_part/code.idl"
     }
   ],
-  "actions": []
+  "actions": [
+    {
+      "service": "HelloWorld",
+      "name": "Greeting",
+      "nameButton": "Greeting",
+      "type": "function"
+    }
+  ]
 }

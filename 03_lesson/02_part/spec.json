@@ -11,5 +11,35 @@
       "file": "03_lesson/02_part/code.idl"
     }
   ],
-  "actions": []
+  "actions": [
+    {
+      "service": "Vft",
+      "name": "Mint",
+      "nameButton": "Mint",
+      "type": "function",
+      "params": {
+        "to": "user",
+        "value": "1000"
+      }
+    },
+    {
+      "service": "Vft",
+      "name": "Burn",
+      "nameButton": "Burn",
+      "type": "function",
+      "params": {
+        "from": "user",
+        "value": "1000"
+      }
+    },
+    {
+      "service": "Vft",
+      "name": "BalanceOf",
+      "nameButton": "Get Balance",
+      "type": "query",
+      "params": {
+        "account": "user"
+      }
+    }
+  ]
 }

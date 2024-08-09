@@ -10,5 +10,13 @@
       "name": "IDL",
       "file": "02_lesson/01_part/code.idl"
     }
+  ],
+  "actions": [
+    {
+      "service": "Token",
+      "nameButton": "Get Name",
+      "name": "Name",
+      "type": "query"
+    }
   ]
 }

@@ -11,5 +11,26 @@
       "file": "02_lesson/03_part/code.idl"
     }
   ],
-  "actions": []
+  "actions": [
+    {
+      "service": "Token",
+      "name": "Transfer",
+      "nameButton": "Transfer",
+      "type": "function",
+      "params": {
+        "from": "user",
+        "to": "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+        "value": "1000"
+      }
+    },
+    {
+      "service": "Token",
+      "name": "BalanceOf",
+      "nameButton": "Get Balance",
+      "type": "query",
+      "params": {
+        "account": "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d"
+      }
+    }
+  ]
 }
