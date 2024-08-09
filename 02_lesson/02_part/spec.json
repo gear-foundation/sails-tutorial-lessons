@@ -19,7 +19,7 @@
       "type": "function",
       "params": {
         "to": "user",
-        "value": "1000"
+        "value": 100000
       }
     },
     {
