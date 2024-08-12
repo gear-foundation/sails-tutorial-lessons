@@ -1,11 +1,7 @@
 {
   "title": "Extending Token Contract",
   "codeId": "0x23a363018d1b14be730c5706a5249c4c4f1b679cc696c455d384fc47138fa76d",
-  "initialParams": [
-    { "name": "Extending Token Contract" },
-    { "symbol": "ETC" },
-    { "decimals": 18 }
-  ],
+  "initialParams": ["Extending Token Contract", "ETC", 18],
   "parts": [
     {
       "title": "Custom Functionalities",
