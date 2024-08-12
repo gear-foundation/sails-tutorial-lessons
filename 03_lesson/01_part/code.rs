@@ -1,31 +1,31 @@
 #![no_std]
-use sails_rs::{prelude::*};
-use vft::{Service as VftService, Storage};
+use sails_rs::prelude::*;
+use vft::{Service as BaseVftService, Storage};
 
 #[derive(Encode, Decode, TypeInfo)]
-pub enum Event {
+pub enum Events {
     Minted { to: ActorId, value: U256 },
     Burned { from: ActorId, value: U256 },
 }
 
 #[derive(Clone)]
-pub struct ExtendedService {
-    vft: VftService,
+pub struct VftService {
+    vft: BaseVftService,
 }
 
-impl ExtendedService {
+impl VftService {
     pub fn init(name: String, symbol: String, decimals: u8) -> Self {
-
-        ExtendedService {
-            vft: <VftService>::seed(name, symbol, decimals),
+        VftService {
+            vft: <BaseVftService>::seed(name, symbol, decimals),
         }
     }
 }
-#[gservice(extends = VftService, events = Event)]
-impl ExtendedService {
+
+#[gservice(extends = VftService, events = Events)]
+impl VftService {
     pub fn new() -> Self {
         Self {
-            vft: VftService::new(),
+            vft: BaseVftService::new(),
         }
     }
     pub fn mint(&mut self, to: ActorId, value: U256) {
@@ -36,8 +36,8 @@ impl ExtendedService {
     }
 }
 
-impl AsRef<VftService> for ExtendedService {
-    fn as_ref(&self) -> &VftService {
+impl AsRef<BaseVftService> for VftService {
+    fn as_ref(&self) -> &BaseVftService {
         &self.vft
     }
 }

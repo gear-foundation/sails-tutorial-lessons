@@ -38,19 +38,6 @@ impl Token {
         *balance += value;
     }
 
-    pub fn transfer(&mut self, from: ActorId, to: ActorId, value: U256) {
-        let state = State::get_mut();
-        let from_balance = state.balances.entry(from).or_insert(U256::zero());
-
-        if *from_balance < value {
-            panic!("Insufficient balance");
-        }
-
-        *from_balance -= value;
-        let to_balance = state.balances.entry(to).or_insert(U256::zero());
-        *to_balance += value;
-    }
-
     pub fn name(&self) -> &'static str {
         let state = State::get();
         &state.name
