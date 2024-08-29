@@ -1,6 +1,10 @@
 {
   "title": "Enhancing a Fungible Token with Custom Functionalities",
   "description": "description.md",
+  "seo": {
+    "title": "",
+    "description": ""
+  },
   "tabs": [
     {
       "name": "Code",

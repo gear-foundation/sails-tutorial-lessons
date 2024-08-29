@@ -1,6 +1,10 @@
 {
   "title": "Implementing Mint and Burn Functions",
   "description": "description.md",
+  "seo": {
+    "title": "",
+    "description": ""
+  },
   "tabs": [
     {
       "name": "Code",

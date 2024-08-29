@@ -1,6 +1,10 @@
 {
   "title": "Implementing Token Transfers and Events",
   "description": "description.md",
+  "seo": {
+    "title": "",
+    "description": ""
+  },
   "tabs": [
     {
       "name": "Code",
