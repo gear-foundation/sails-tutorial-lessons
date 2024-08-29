@@ -40,6 +40,22 @@
       "params": {
         "account": "user"
       }
+    },
+    {
+      "service": "Vft",
+      "name": "ChangeAdmin",
+      "nameButton": "Change Admin",
+      "type": "function",
+      "params": {
+        "account": "user"
+      }
+    },
+    {
+      "service": "Vft",
+      "name": "AdminAddress",
+      "nameButton": "Get Admin",
+      "type": "query",
+      "params": {}
     }
   ]
 }

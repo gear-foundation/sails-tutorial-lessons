@@ -13,15 +13,30 @@ pub struct VftService {
     vft: BaseVftService,
 }
 
+static mut ADMIN: Option<ActorId> = None;
+
+fn set_admin(admin: ActorId) {
+    unsafe {
+        ADMIN = Some(admin);
+    }
+}
+
+fn get_admin() -> &'static ActorId {
+    unsafe {
+       ADMIN.as_ref().expect("Contract is not initialized")
+    }
+}
+
 impl VftService {
     pub fn init(name: String, symbol: String, decimals: u8) -> Self {
+        set_admin(admin);
         VftService {
             vft: <BaseVftService>::seed(name, symbol, decimals),
         }
     }
 }
 
-#[gservice(extends = VftService, events = Events)]
+#[gservice(extends = BaseVftService, events = Events)]
 impl VftService {
     pub fn new() -> Self {
         Self {
@@ -33,6 +48,10 @@ impl VftService {
 
     pub fn burn(&mut self, from: ActorId, value: U256) {
 
+    }
+    fn only_admin(&self) {
+        let admin = get_admin();
+        assert_eq!(*admin, gstd::msg::source(), "Unauthorized access");
     }
 }
 
@@ -55,4 +74,3 @@ impl MyProgram {
         VftService::new()
     }
 }
-
