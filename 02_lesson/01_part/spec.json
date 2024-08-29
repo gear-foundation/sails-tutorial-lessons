@@ -1,6 +1,10 @@
 {
   "title": "Understanding Services, Storage, and Message Routing",
   "description": "description.md",
+  "seo": {
+    "title": "",
+    "description": ""
+  },
   "tabs": [
     {
       "name": "Code",

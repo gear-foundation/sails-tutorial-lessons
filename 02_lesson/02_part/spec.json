@@ -1,6 +1,10 @@
 {
   "title": "Implementing User Balances and Token Minting",
   "description": "description.md",
+  "seo": {
+    "title": "",
+    "description": ""
+  },
   "tabs": [
     {
       "name": "Code",
