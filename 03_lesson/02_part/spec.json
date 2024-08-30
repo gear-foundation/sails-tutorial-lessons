@@ -1,6 +1,12 @@
 {
   "title": "Implementing Mint and Burn Functions",
   "description": "description.md",
+  "seo": {
+    "title": "",
+    "description": ""
+  },
+  "codeId": "0x23a363018d1b14be730c5706a5249c4c4f1b679cc696c455d384fc47138fa76d",
+  "initialParams": ["Extending Token Contract", "ETC", 18],
   "tabs": [
     {
       "name": "Code",

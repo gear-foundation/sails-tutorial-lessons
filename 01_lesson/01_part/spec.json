@@ -1,6 +1,12 @@
 {
-  "title": "Building Your First Hello World Program",
+  "title": "Hello World Tutorial",
   "description": "description.md",
+  "seo": {
+    "title": "Hello World dApp Tutorial",
+    "description": "Write your first \"Hello World\" program on Vara Network. Focus on solving business problems without the hassle of low-level boilerplate code, thanks to automated IDL generation and multi-language client support. This tutorial walks through setup, development, and deployment."
+  },
+  "codeId": "0x8575e7a9c271960147c493855d5e476ee57945905021fcb7e63b72e9d8d96952",
+  "initialParams": [],
   "tabs": [
     {
       "name": "Code",
