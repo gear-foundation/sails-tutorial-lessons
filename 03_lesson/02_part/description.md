@@ -13,3 +13,16 @@ Let's focus on implementing the `mint` and `burn` functions to manage the token 
     - If the new token for the account balance is valid, the `burn` function updates the balances and total supply.
     - If the new balance is zero, it removes the account from the balances.
     - Finally, it emits a `Burned` event.
+3. **Admin management**
+    - The `change_admin` function provides the current administrator with the ability to transfer their administrative privileges to another address. This ensures that control over the contract can be handed over smoothly when required.
+    - Before making any changes, the function first verifies that the caller is indeed the current administrator by using the `only_admin` function. If the caller is authorized, the `ADMIN` variable is then updated to reflect the new administrator's address.
+    - The `admin_address` function allows users to query the current administrator's address. By calling this method, any user can retrieve the `ActorId` of the admin stored in the contract.
+
+
+
+Congratulations on completing the lesson! You've learned how to write programs using the Sails framework. 
+
+Next Steps:
+- Check out the token standards on the [Gear Foundation's repository](https://github.com/gear-foundation/standards);
+- Dive deeper into the [Sails documentation](https://github.com/gear-tech/sails) to learn about other advanced features and capabilities.
+
