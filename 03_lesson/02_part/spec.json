@@ -5,6 +5,8 @@
     "title": "",
     "description": ""
   },
+  "codeId": "0xf6dcccd0343938d517b195e426b4d21e5fc453ca45a50aa8eedc5063d81fa2b2",
+  "initialParams": ["Extending Token Contract", "ETC", 18, "user"],
   "tabs": [
     {
       "name": "Code",
@@ -44,6 +46,22 @@
       "params": {
         "account": "user"
       }
+    },
+    {
+      "service": "Vft",
+      "name": "ChangeAdmin",
+      "nameButton": "Change Admin",
+      "type": "function",
+      "params": {
+        "account": "user"
+      }
+    },
+    {
+      "service": "Vft",
+      "name": "AdminAddress",
+      "nameButton": "Get Admin",
+      "type": "query",
+      "params": {}
     }
   ]
 }
