@@ -1,0 +1,21 @@
+{
+  "title": "Prepare",
+  "description": "description.md",
+  "seo": {
+    "title": "",
+    "description": ""
+  },
+  "codeId": "",
+  "initialParams": [],
+  "tabs": [
+    {
+      "name": "Code",
+      "file": "04_lesson/01_part/code.ts"
+    },
+    {
+      "name": "IDL",
+      "file": "04_lesson/01_part/code.idl"
+    }
+  ],
+  "actions": []
+}

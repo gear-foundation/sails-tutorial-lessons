@@ -1,0 +1,29 @@
+{
+  "title": "Fungible Token Program",
+  "parts": [
+    {
+      "title": "Prepare",
+      "file": "04_lesson/01_part/"
+    },
+    {
+      "title": "Get Program Instance",
+      "file": "04_lesson/02_part/"
+    },
+    {
+      "title": "Mint Tokens",
+      "file": "04_lesson/03_part/"
+    },
+    {
+      "title": "Read Balances",
+      "file": "04_lesson/04_part/"
+    },
+    {
+      "title": "Subscribe to Transfer Events",
+      "file": "04_lesson/05_part/"
+    },
+    {
+      "title": "Transfer Tokens",
+      "file": "04_lesson/06_part/"
+    }
+  ]
+}
