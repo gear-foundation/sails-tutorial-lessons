@@ -1,37 +1,58 @@
+import { decodeAddress, GearApi } from '@gear-js/api';
+import { Keyring } from '@polkadot/api';
 import { readFileSync } from 'fs';
 
 import { Program } from './lib';
 
-const vftProgram = new Program(api);
+const VARA_TESTNET_ENDPOINT = 'wss://testnet.vara.network';
+const api = await GearApi.create({ providerAddress: VARA_TESTNET_ENDPOINT });
 
-const PROGRAM_ID =
-  '0x69548a586ad7b83178ffdebfdd626236311f093e52589c9952aa40edec2e2d55';
+const aliceKeyring = new Keyring({ type: 'sr25519' }).addFromUri('//Alice');
+const bobKeyring = new Keyring({ type: 'sr25519' }).addFromUri('//Bob');
+const aliceAccountAddress = decodeAddress(aliceKeyring.address);
+const bobAccountAddress = decodeAddress(bobKeyring.address);
 
-const existingVftProgram = new Program(api, PROGRAM_ID);
+const TOKEN = {
+  NAME: 'Tutorial Token',
+  SYMBOL: 'TT',
+  DECIMALS: 12,
+} as const;
 
-const optWasmBuffer = readFileSync('./extended_vft.opt.wasm');
+const TOKENS_AMOUNT = 1 * 10 ** TOKEN.DECIMALS;
 
-const uploadProgramTransaction = await vftProgram
-  .newCtorFromCode(optWasmBuffer, TOKEN.NAME, TOKEN.SYMBOL, TOKEN.DECIMALS)
-  .withAccount(aliceKeyring)
-  .calculateGas();
+const uploadProgram = async () => {
+  const vftProgram = new Program(api);
+  const optWasmBuffer = readFileSync('./extended_vft.opt.wasm');
 
-const { response: uploadProgramResponse } =
-  await uploadProgramTransaction.signAndSend();
+  const uploadProgramTransaction = await vftProgram
+    .newCtorFromCode(optWasmBuffer, TOKEN.NAME, TOKEN.SYMBOL, TOKEN.DECIMALS)
+    .withAccount(aliceKeyring)
+    .calculateGas();
 
-await uploadProgramResponse();
+  const { response: uploadProgramResponse } =
+    await uploadProgramTransaction.signAndSend();
 
-const VFT_CODE_ID =
-  '0xf7dba362cd66a35fb95c41b6a530ee287f013caecde32e4d8fa498a716913c3f';
+  await uploadProgramResponse();
 
-const createProgramTransaction = vftProgram.newCtorFromCodeId(
-  VFT_CODE_ID,
-  TOKEN.NAME,
-  TOKEN.SYMBOL,
-  TOKEN.DECIMALS
-);
+  return vftProgram.programId;
+};
 
-const { response: createProgramResponse } =
-  await createProgramTransaction.signAndSend();
+const createProgram = async () => {
+  const vftProgram = new Program(api);
+  const CODE_ID = '0x00';
 
-await createProgramResponse();
+  const createProgramTransaction = await vftProgram
+    .newCtorFromCodeId(CODE_ID, TOKEN.NAME, TOKEN.SYMBOL, TOKEN.DECIMALS)
+    .withAccount(aliceKeyring)
+    .calculateGas();
+
+  const { response: createProgramResponse } =
+    await createProgramTransaction.signAndSend();
+
+  await createProgramResponse();
+
+  return vftProgram.programId;
+};
+
+const PROGRAM_ID = '0x00';
+const vftProgram = new Program(api, PROGRAM_ID);

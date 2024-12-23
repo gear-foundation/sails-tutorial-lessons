@@ -10,7 +10,7 @@
       "file": "04_lesson/02_part/"
     },
     {
-      "title": "Mint Tokens",
+      "title": "Send Mint and Transfer Transactions",
       "file": "04_lesson/03_part/"
     },
     {
@@ -20,10 +20,6 @@
     {
       "title": "Subscribe to Transfer Events",
       "file": "04_lesson/05_part/"
-    },
-    {
-      "title": "Transfer Tokens",
-      "file": "04_lesson/06_part/"
     }
   ]
 }
