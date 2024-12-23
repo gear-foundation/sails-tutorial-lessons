@@ -1,0 +1,25 @@
+{
+  "title": "Get Program Instance",
+  "description": "description.md",
+  "seo": {
+    "title": "",
+    "description": ""
+  },
+  "codeId": "0xf7dba362cd66a35fb95c41b6a530ee287f013caecde32e4d8fa498a716913c3f",
+  "initialParams": [],
+  "tabs": [
+    {
+      "name": "Code",
+      "file": "04_lesson/02_part/code.ts"
+    },
+    {
+      "name": "IDL",
+      "file": "04_lesson/02_part/code.idl"
+    },
+    {
+      "name": "Program",
+      "file": "04_lesson/02_part/lib.ts"
+    }
+  ],
+  "actions": []
+}

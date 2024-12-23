@@ -1,0 +1,25 @@
+{
+  "title": "Subscribe to Transfer Events",
+  "description": "description.md",
+  "seo": {
+    "title": "",
+    "description": ""
+  },
+  "codeId": "",
+  "initialParams": [],
+  "tabs": [
+    {
+      "name": "Code",
+      "file": "04_lesson/05_part/code.ts"
+    },
+    {
+      "name": "IDL",
+      "file": "04_lesson/05_part/code.idl"
+    },
+    {
+      "name": "Program",
+      "file": "04_lesson/05_part/lib.ts"
+    }
+  ],
+  "actions": []
+}
