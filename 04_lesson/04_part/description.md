@@ -4,6 +4,6 @@ Particular [service](https://github.com/gear-tech/sails/tree/master/js#services)
 
 ### Reading Balances
 
-To get the balance of Alice's account, use the `balanceOf` method from the `VFT` service of the program instance. This method takes Alice's account address as a parameter and returns the balance.
+To get the balance of developer's account, use the `balanceOf` method from the `VFT` service of the program instance. This method takes account's address as a parameter and returns the balance.
 
-Similarly, to get the balance of Bob's account, use the `balanceOf` method from the `VFT` service of the program instance. This method takes Bob's account address as a parameter and returns the balance.
+Similarly, to get the balance of Alice's account, use the `balanceOf` method from the `VFT` service of the program instance. This method takes Alice's account address as a parameter and returns the balance.

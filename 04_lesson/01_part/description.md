@@ -4,11 +4,13 @@ With the help of the [Gear-JS API](https://github.com/gear-tech/gear-js/tree/mai
 
 ### Setting Up Developer Accounts:
 
-In this tutorial, we will use developer accounts to facilitate transactions and other network activities. Developer accounts are convenient for testing and development purposes.
+In this tutorial, we will use developer accounts to facilitate transactions and other network activities. Such accounts are convenient for testing and development purposes.
 
-We create two accounts with predefined URIs for Alice and Bob by using the `Keyring` to create and manage these developer accounts.
+We create a new account by generating a mnemonic and using the `Keyring` to create and manage it.
 
-While developer accounts are convenient for testing and development, in a production environment, you might replace them with accounts managed through a UI, allowing end-users to interact with the network by the wallet of their choice.
+Additionally, we'll create an account with predefined URI for Alice.
+
+**Warning**: Developer accounts are intended for testing and development purposes only. Using developer accounts in production environments poses significant security risks, as these accounts are often publicly known and can be easily compromised. In a production environment, always use secure, user-managed accounts through a UI, allowing end-users to interact with the network using the wallet of their choice. This ensures better security and control over account management.
 
 ### Defining Token Constants
 

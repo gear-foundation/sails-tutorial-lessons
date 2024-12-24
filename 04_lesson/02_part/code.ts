@@ -1,5 +1,6 @@
 import { decodeAddress, GearApi } from '@gear-js/api';
 import { Keyring } from '@polkadot/api';
+import { mnemonicGenerate } from '@polkadot/util-crypto';
 import { readFileSync } from 'fs';
 
 import { Program } from './lib';
@@ -7,10 +8,11 @@ import { Program } from './lib';
 const VARA_TESTNET_ENDPOINT = 'wss://testnet.vara.network';
 const api = await GearApi.create({ providerAddress: VARA_TESTNET_ENDPOINT });
 
+const mnemonic = mnemonicGenerate();
+const keyring = new Keyring({ type: 'sr25519' }).addFromMnemonic(mnemonic);
 const aliceKeyring = new Keyring({ type: 'sr25519' }).addFromUri('//Alice');
-const bobKeyring = new Keyring({ type: 'sr25519' }).addFromUri('//Bob');
+const accountAddress = decodeAddress(keyring.address);
 const aliceAccountAddress = decodeAddress(aliceKeyring.address);
-const bobAccountAddress = decodeAddress(bobKeyring.address);
 
 const TOKEN = {
   NAME: 'Tutorial Token',
@@ -26,7 +28,7 @@ const uploadProgram = async () => {
 
   const uploadProgramTransaction = await vftProgram
     .newCtorFromCode(optWasmBuffer, TOKEN.NAME, TOKEN.SYMBOL, TOKEN.DECIMALS)
-    .withAccount(aliceKeyring)
+    .withAccount(keyring)
     .calculateGas();
 
   const { response: uploadProgramResponse } =
@@ -43,7 +45,7 @@ const createProgram = async () => {
 
   const createProgramTransaction = await vftProgram
     .newCtorFromCodeId(CODE_ID, TOKEN.NAME, TOKEN.SYMBOL, TOKEN.DECIMALS)
-    .withAccount(aliceKeyring)
+    .withAccount(keyring)
     .calculateGas();
 
   const { response: createProgramResponse } =

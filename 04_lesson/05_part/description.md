@@ -12,9 +12,9 @@ This method allows us to listen for transfer events and execute a callback funct
 
 ### Handling Transfer Events
 
-In our case, we filter out events that do not match the specific transaction we are interested in (transfers from Alice to Bob with the specified token amount).
+In our case, we filter out events that do not match the specific transaction we are interested in (transfers from developer account to Alice with the specified token amount).
 
-When a matching transfer event is detected, we read the updated balances of Alice and Bob using the `balanceOf` method described in the previous step.This ensures that we have the latest balance information after the transfer.
+When a matching transfer event is detected, we read the updated balances of developer and Alice accounts using the `balanceOf` method described in the previous step. This ensures that we have the latest balance information after the transfer.
 
 Once the desired transaction is found and the balances are updated, we unsubscribe from the transfer events to stop listening for further events.
 
