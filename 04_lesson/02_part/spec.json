@@ -6,7 +6,7 @@
     "description": ""
   },
   "codeId": "0xf7dba362cd66a35fb95c41b6a530ee287f013caecde32e4d8fa498a716913c3f",
-  "initialParams": [],
+  "initialParams": ["Tutorial Token", "TT", 12, "user"],
   "tabs": [
     {
       "name": "Code",

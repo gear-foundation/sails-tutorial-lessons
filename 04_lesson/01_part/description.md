@@ -4,9 +4,9 @@ With the help of the [Gear-JS API](https://github.com/gear-tech/gear-js/tree/mai
 
 ### Setting Up Developer Accounts:
 
-In this tutorial, we create two accounts with predefined URIs for Alice and Bob. These accounts are used to facilitate transactions and other network activities.
+In this tutorial, we will use developer accounts to facilitate transactions and other network activities. Developer accounts are convenient for testing and development purposes.
 
-Use the `Keyring` to create and manage developer accounts.
+We create two accounts with predefined URIs for Alice and Bob by using the `Keyring` to create and manage these developer accounts.
 
 While developer accounts are convenient for testing and development, in a production environment, you might replace them with accounts managed through a UI, allowing end-users to interact with the network by the wallet of their choice.
 
