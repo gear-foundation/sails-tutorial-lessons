@@ -1,8 +1,8 @@
 For the sake of simplicity, we will continue from the previous step of the tutorial using the program instance with specified program ID.
 
-Program transactions are handled using the `Sails-JS` functions provided by the generated program.
+Program transactions are handled using the `Sails-JS` [functions](https://github.com/gear-tech/sails/tree/master/js#functions) provided by the generated program.
 
-In our case, we are working with a Fungible Token Program that includes a `VFT` service. This service contains all the necessary functions for managing tokens, such as minting and transferring. By utilizing these functions, we can easily perform all required transactions.
+Particular [service](https://github.com/gear-tech/sails/tree/master/js#services) of the program contains all the necessary functions for managing tokens, such as minting and transferring. By utilizing them, we can easily perform all required transactions.
 
 ### Mint Tokens
 

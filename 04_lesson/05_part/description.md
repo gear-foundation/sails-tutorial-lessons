@@ -1,8 +1,10 @@
-In this step, we will subscribe to transfer events to monitor token transfers and update balances accordingly. This is useful for reacting to specific transactions and updating the state of your application in real-time.
+In this step, we will subscribe to transfer events to monitor token transfers and update balances accordingly.
+
+Using `Sails-JS` library, [events](https://github.com/gear-tech/sails/tree/master/js#events) are monitored via subscriptions.
+
+Particular [service](https://github.com/gear-tech/sails/tree/master/js#services) of the program contains all the necessary subscriptions for available events, such as transfer and approval. By using them, we can react to specific transactions and update the state of our application in real-time.
 
 ### Subscribe to Transfer Events
-
-Using `Sails-JS` library, events are monitored via event subscriptions.
 
 We subscribe to transfer events using the `subscribeToTransferEvent` method from the `VFT` Service of the program instance
 
