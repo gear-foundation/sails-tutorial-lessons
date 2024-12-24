@@ -1,24 +1,24 @@
 {
-  "title": "Fungible Token Program",
+  "title": "Interacting with Fungible Token Program",
   "parts": [
     {
-      "title": "Prepare",
+      "title": "Initial Setup",
       "file": "04_lesson/01_part/"
     },
     {
-      "title": "Get Program Instance",
+      "title": "Program Instance",
       "file": "04_lesson/02_part/"
     },
     {
-      "title": "Send Mint and Transfer Transactions",
+      "title": "Mint and Transfer Transactions",
       "file": "04_lesson/03_part/"
     },
     {
-      "title": "Read Balances",
+      "title": "Balance Query",
       "file": "04_lesson/04_part/"
     },
     {
-      "title": "Subscribe to Transfer Events",
+      "title": "Transfer Event Subscription",
       "file": "04_lesson/05_part/"
     }
   ]
