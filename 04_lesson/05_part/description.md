@@ -2,7 +2,7 @@ In this step, we will subscribe to transfer events to monitor token transfers an
 
 Using `Sails-JS` library, [events](https://github.com/gear-tech/sails/tree/master/js#events) are monitored via subscriptions.
 
-Particular [service](https://github.com/gear-tech/sails/tree/master/js#services) of the program contains all the necessary subscriptions for available events, such as transfer and approval. By using them, we can react to specific transactions and update the state of our application in real-time.
+Particular [service](https://github.com/gear-tech/sails/tree/master/js#services) of the program contains all the necessary [subscriptions](https://github.com/gear-tech/sails/tree/master/js/cli#event-subscription-methods) for available events, such as transfer and approval. By using them, we can react to specific transactions and update the state of our application in real-time.
 
 ### Subscribe to Transfer Events
 

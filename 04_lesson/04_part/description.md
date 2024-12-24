@@ -1,6 +1,6 @@
 To read the balances of accounts, we utilize the `Sails-JS` [queries](https://github.com/gear-tech/sails/tree/master/js#queries) provided by the generated program.
 
-Particular [service](https://github.com/gear-tech/sails/tree/master/js#services) of the program contains all the necessary queries for managing tokens state, such as balance and allowance. By using them, we can easily obtain current state of the program.
+Particular [service](https://github.com/gear-tech/sails/tree/master/js#services) of the program contains all the necessary [query methods](https://github.com/gear-tech/sails/tree/master/js/cli#query-methods) for managing tokens state, such as balance and allowance. By using them, we can easily obtain current state of the program.
 
 ### Reading Balances
 
