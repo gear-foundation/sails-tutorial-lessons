@@ -23,45 +23,35 @@
       "name": "Mint",
       "nameButton": "Mint",
       "type": "function",
-      "params": {
-        "to": "user",
-        "value": 100000
-      }
+      "params": ["user", 100000]
     },
     {
       "service": "Vft",
       "name": "Burn",
       "nameButton": "Burn",
       "type": "function",
-      "params": {
-        "from": "user",
-        "value": 100000
-      }
+      "params": ["user", 100000]
     },
     {
       "service": "Vft",
       "name": "BalanceOf",
       "nameButton": "Get Balance",
       "type": "query",
-      "params": {
-        "account": "user"
-      }
+      "params": ["user"]
     },
     {
       "service": "Vft",
       "name": "ChangeAdmin",
       "nameButton": "Change Admin",
       "type": "function",
-      "params": {
-        "account": "user"
-      }
+      "params": ["user"]
     },
     {
       "service": "Vft",
       "name": "AdminAddress",
       "nameButton": "Get Admin",
       "type": "query",
-      "params": {}
+      "params": []
     }
   ]
 }

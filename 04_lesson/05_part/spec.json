@@ -1,45 +1,55 @@
 {
-  "title": "Implementing Token Transfers and Events",
+  "title": "Transfer Events Subscription: Utilizing Sails Events",
   "description": "description.md",
   "seo": {
     "title": "",
     "description": ""
   },
-  "codeId": "0xb5d0e67242b8951c898e62013c3adbdb0c04751c7010f2f879cfc7393062aa57",
-  "initialParams": ["Fungible Token Contract"],
+  "codeId": "0xf7dba362cd66a35fb95c41b6a530ee287f013caecde32e4d8fa498a716913c3f",
+  "initialParams": ["Tutorial Token", "TT", 12],
   "tabs": [
     {
       "name": "Code",
-      "file": "02_lesson/03_part/code.rs"
+      "file": "04_lesson/05_part/code.ts"
     },
     {
       "name": "IDL",
-      "file": "02_lesson/03_part/code.idl"
+      "file": "04_lesson/05_part/code.idl"
+    },
+    {
+      "name": "Program",
+      "file": "04_lesson/05_part/lib.ts"
     }
   ],
   "actions": [
     {
-      "service": "Token",
+      "service": "Vft",
       "name": "Mint",
       "nameButton": "Mint",
       "type": "function",
-      "params": ["user", 100000]
+      "params": ["user", 1000000000000]
     },
     {
-      "service": "Token",
+      "service": "Vft",
       "name": "Transfer",
       "nameButton": "Transfer",
       "type": "function",
       "params": [
-        "user",
         "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
-        100000
+        1000000000000
       ]
     },
     {
-      "service": "Token",
+      "service": "Vft",
       "name": "BalanceOf",
       "nameButton": "Get Balance",
+      "type": "query",
+      "params": ["user"]
+    },
+    {
+      "service": "Vft",
+      "name": "BalanceOf",
+      "nameButton": "Get Alice Balance",
       "type": "query",
       "params": [
         "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d"

@@ -1,0 +1,43 @@
+{
+  "title": "Mint and Transfer Transactions: Utilizing Sails Functions",
+  "description": "description.md",
+  "seo": {
+    "title": "",
+    "description": ""
+  },
+  "codeId": "0xf7dba362cd66a35fb95c41b6a530ee287f013caecde32e4d8fa498a716913c3f",
+  "initialParams": ["Tutorial Token", "TT", 12],
+  "tabs": [
+    {
+      "name": "Code",
+      "file": "04_lesson/03_part/code.ts"
+    },
+    {
+      "name": "IDL",
+      "file": "04_lesson/03_part/code.idl"
+    },
+    {
+      "name": "Program",
+      "file": "04_lesson/03_part/lib.ts"
+    }
+  ],
+  "actions": [
+    {
+      "service": "Vft",
+      "name": "Mint",
+      "nameButton": "Mint",
+      "type": "function",
+      "params": ["user", 1000000000000]
+    },
+    {
+      "service": "Vft",
+      "name": "Transfer",
+      "nameButton": "Transfer",
+      "type": "function",
+      "params": [
+        "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+        1000000000000
+      ]
+    }
+  ]
+}

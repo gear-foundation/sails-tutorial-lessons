@@ -1,0 +1,25 @@
+{
+  "title": "Interacting with Fungible Token Program",
+  "parts": [
+    {
+      "title": "Initial Setup",
+      "file": "04_lesson/01_part/"
+    },
+    {
+      "title": "Program Instance",
+      "file": "04_lesson/02_part/"
+    },
+    {
+      "title": "Mint and Transfer Transactions",
+      "file": "04_lesson/03_part/"
+    },
+    {
+      "title": "Balance Query",
+      "file": "04_lesson/04_part/"
+    },
+    {
+      "title": "Transfer Event Subscription",
+      "file": "04_lesson/05_part/"
+    }
+  ]
+}
