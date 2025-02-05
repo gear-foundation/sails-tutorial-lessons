@@ -1,6 +1,6 @@
 ### Connecting to the API
 
-With the help of the [Gear-JS API](https://github.com/gear-tech/gear-js/tree/main/api#getting-started) library, start by connecting to the Vara testnet using the provided endpoint URL. This connection enables interaction with the network for various operations.
+With the help of the [Gear-JS API](https://github.com/gear-tech/gear-js/tree/main/apis/gear#getting-started) library, start by connecting to the Vara testnet using the provided endpoint URL. This connection enables interaction with the network for various operations.
 
 ### Setting Up Developer Accounts:
 
